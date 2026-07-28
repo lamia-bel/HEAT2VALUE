@@ -16,7 +16,7 @@ charge = np.clip(charge, 20, 100) #apres l'ajout de bruit on force les valeurs a
 puissance_IT = (charge/100) * 1000
 
 #la chaleur produite par les serveurs en Kw
-#comme 95% d'éléctricité consommée evient une chaleur 
+#comme 95% d'éléctricité consommée devient une chaleur 
 chaleur_produite = puissance_IT * 0.95
 
 #on rajoute la température et l'intensité carbone pour que l'algorithmedécide quoi faire avec la chaleur produite
@@ -24,6 +24,17 @@ chaleur_produite = puissance_IT * 0.95
 temp=np.linspace(2,10,96)
 temp = temp + np.random.normal(0, 0.5, 96)
 temp = np.clip(temp, 0, 15) 
+
+#2-un autre scénario pour le teste pour le rejet de chaleur
+#temp = np.linspace(20, 38, 96) + np.random.normal(0, 0.5, 96)
+#temp = np.clip(temp, 18, 40)
+
+#3-un scénario pour le teste pour le stockage de chaleur
+#temp = np.linspace(20, 30, 96) + np.random.normal(0, 0.5, 96)
+#temp = np.clip(temp, 18, 35)
+
+#carbone = np.linspace(160, 280, 96) + np.random.normal(0, 10, 96)
+#carbone = np.clip(carbone, 150, 300)
 
 #dans les réseaux éléctriques francais , intensité carbone  est 60 gCO2/kWh en moyenne la nuit et 280 gCO2/kWh le soir 
 carbone=np.linspace(60,280,96)
@@ -40,7 +51,8 @@ df = pd.DataFrame({
     "intensite_carbone_gCO2/kWh": carbone.round(1),
 })
 
-print(df.head(10).to_string(index=False))
-print(f"\nChaleur moyenne produite : {chaleur_produite.mean():.0f} kW")
-print(f"\nTempérature moyenne extérieure : {temp.mean():.1f} °C")
-print(f"\nIntensité carbone moyenne : {carbone.mean():.0f} gCO2/kWh")
+if __name__ == "__main__":
+    print(df.head(10).to_string(index=False))
+    print(f"\nChaleur moyenne produite : {chaleur_produite.mean():.0f} kW")
+    print(f"\nTempérature moyenne extérieure : {temp.mean():.1f} °C")
+    print(f"\nIntensité carbone moyenne : {carbone.mean():.0f} gCO2/kWh")
