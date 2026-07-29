@@ -1,13 +1,17 @@
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
-from simulateur import df as df_sim
-from decision import chaleur_reutilisee, decision
-from kpi import PUE_liste, CUE_liste, WUE_liste
+from simulateur import generer_simulation
+from decision import heat2value
+from kpi import calcul_kpi
 
 #On récupere les données nécessaires 
 
+df_sim = generer_simulation()
+df_decision, HRR, reutilisee, stockee, rejetee = heat2value(df_sim)
+df_kpi = calcul_kpi(df_sim, df_decision)
+
 puissance_IT = df_sim["puissance_IT_kW"].to_numpy()
+chaleur_reutilisee = df_decision["chaleur_reutilisee_kW"].to_numpy()
 carbone = df_sim["intensite_carbone_gCO2/kWh"].to_numpy()
 heures = df_sim["heure"]
 
@@ -38,6 +42,12 @@ for i in range(96):
 #2-Scénario avec l'algorithme de décision
 #on a déjà calculé les KPI dans le fichier kpi.py donc on peut juste les afficher
 #HRR: uniquement pour Heat2Value, on peut calculer le Heat Reuse Ratio (HRR) = chaleur réutilisée / chaleur produite
+PUE_liste = df_kpi["PUE"].mean()
+
+CUE_liste = df_kpi["CUE_gCO2/kWh"].mean()
+
+WUE_liste = df_kpi["WUE_L/kWh"].mean()
+
 total_kWh=sum(puissance_IT * 0.95) * 0.25
 reutilisee_kWh=sum(chaleur_reutilisee) * 0.25
 HRR=round(reutilisee_kWh/total_kWh, 2)
@@ -59,21 +69,21 @@ fig, axes = plt.subplots(3, 1, figsize=(14, 10))
 fig.suptitle("HEAT2VALUE — Comparaison sur 24h", fontsize=14)
 
 axes[0].plot(heures, PUE_sans_algo, color="tomato", linewidth=2, label="Sans HEAT2VALUE")
-axes[0].plot(heures, PUE_liste, color="green", linewidth=2, label="Avec HEAT2VALUE")
+axes[0].plot(heures, df_kpi["PUE"], color="green", linewidth=2, label="Avec HEAT2VALUE")
 axes[0].set_ylabel("PUE")
 axes[0].set_title("PUE — Plus proche de 1.0 = meilleur")
 axes[0].legend()
 axes[0].grid(True, alpha=0.3)
 
 axes[1].plot(heures, CUE_sans_algo, color="tomato", linewidth=2, label="Sans HEAT2VALUE")
-axes[1].plot(heures, CUE_liste, color="green", linewidth=2, label="Avec HEAT2VALUE")
+axes[1].plot(heures, df_kpi["CUE_gCO2/kWh"], color="green", linewidth=2, label="Avec HEAT2VALUE")
 axes[1].set_ylabel("CUE (gCO2/kWh)")
 axes[1].set_title("CUE — Plus bas = moins de carbone")
 axes[1].legend()
 axes[1].grid(True, alpha=0.3)
 
 axes[2].plot(heures, WUE_sans_algo, color="tomato", linewidth=2, label="Sans HEAT2VALUE")
-axes[2].plot(heures, WUE_liste, color="green", linewidth=2, label="Avec HEAT2VALUE")
+axes[2].plot(heures, df_kpi["WUE_L/kWh"], color="green", linewidth=2, label="Avec HEAT2VALUE")
 axes[2].set_ylabel("WUE (L/kWh)")
 axes[2].set_title("WUE — Plus bas = moins d'eau")
 axes[2].legend()
