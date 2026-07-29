@@ -1,0 +1,13 @@
+scenario,PUE,CUE,WUE,HRR
+Jour d'hiver typique en France,1.05,0.0,0.5,80.0
+Vague de froid exceptionnelle,1.05,0.0,0.5,80.0
+Journée de printemps douce,1.053,0.34,0.51,78.8
+Premier jour d'été,1.3,19.5,1.8,0.0
+Canicule exceptionnelle,1.3,10.4,1.8,0.0
+Journée estivale très chaude,1.3,13.0,1.8,0.0
+Transition été-automne,1.152,10.56,1.03,37.53
+Journée d'automne typique,1.05,0.0,0.5,80.0
+Début de la saison froide,1.05,0.0,0.5,80.0
+Pic de consommation décembre,1.05,0.0,0.5,80.0
+Canicule record,1.3,7.8,1.8,0.0
+Vague de froid extrême,1.05,0.0,0.5,80.0

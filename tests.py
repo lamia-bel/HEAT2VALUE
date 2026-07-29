@@ -52,6 +52,16 @@ def tester_journee(date, temp_min, temp_max):
     temperature += np.random.normal(0,0.5,96)
 
     df_sim["temp_exterieure_C"] = temperature
+    
+    # Création des 96 instants de la journée testée (toutes les 15 min)
+    heures = pd.date_range(
+        start=f"{date} 00:00",
+        periods=96,
+        freq="15min"
+    )
+
+    # Remplacement des heures dans le DataFrame
+    df_sim["heure"] = heures
 
     # exécution de l'algorithme
     df_decision, HRR, reutilisee, stockee, rejetee = heat2value(df_sim)
