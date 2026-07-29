@@ -37,7 +37,7 @@ for i in range(96):
         reutilisee = chaleur * 0.8
         stockee = 0
         rejetee = chaleur * 0.2
-        decision.append("Réutilisation de la chaleur pour chauffage")
+        decision.append("Réutilisation")
 
     #option 2: si le carbone est élevé et le réservoir n'est pas plein on stocke la chaleur
     elif co2 > SEUIL_CARBONE and reservoir < CAPACITE_RESERVOIR * 0.90:
@@ -46,14 +46,14 @@ for i in range(96):
         reservoir = min(reservoir, CAPACITE_RESERVOIR)
         reutilisee = 0
         rejetee = chaleur * 0.30
-        decision.append("Stockage de la chaleur dans le réservoir thermique")
+        decision.append("Stockage")
 
     #option 3 : on fait rien et on rejette la chaleur
     else:
         reutilisee = 0
         stockee = 0
         rejetee = chaleur
-        decision.append("Rejet de la chaleur produite")
+        decision.append("Rejet")
 
     chaleur_reutilisee.append(round(reutilisee, 1))
     chaleur_stockee.append(round(stockee, 1))
