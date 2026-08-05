@@ -130,9 +130,9 @@ function fitImage(natW, natH, boxX, boxY, boxW, boxH) {
   s.addShape("ellipse", { x: -2.2, y: 5.0, w: 4.8, h: 4.8, fill: { color: NAVY_DARK }, line: { type: "none" } });
 
   // logos row
-//   s.addImage({ path: A + "logo_univ.jpeg", x: 0.7, y: 0.5, w: 2.2, h: 0.75 });
-//   s.addImage({ path: A + "logo_cfa.png", x: 3.1, y: 0.52, w: 0.85, h: 0.32 });
-//   s.addImage({ path: A + "logo_isoar.jpeg", x: 11.0, y: 0.5, w: 1.6, h: 0.64 });
+  s.addImage({ path: A + "logo_univ.jpeg", x: 0.7, y: 0.5, w: 2.2, h: 0.75 });
+  s.addImage({ path: A + "logo_cfa.png", x: 3.1, y: 0.52, w: 0.85, h: 0.32 });
+  s.addImage({ path: A + "logo_isoar.jpeg", x: 11.0, y: 0.5, w: 1.6, h: 0.64 });
 
   s.addText("MÉMOIRE DE FIN D'ÉTUDES — MASTER 2 MIAGE", {
     x: 0.9, y: 2.3, w: 11.5, h: 0.5, fontFace: FONT_BODY, fontSize: 14, color: ORANGE, bold: true, charSpacing: 3,
@@ -224,12 +224,12 @@ sectionDivider("01", "Partie 1", "Synthèse de l'activité en entreprise", "ISOA
   s.addText("Quelques clients", { x: 7.65, y: 2.05, w: 4.8, h: 0.4, fontFace: FONT_HEAD, fontSize: 15, color: NAVY, bold: true });
 
   const clients = [
-    // { logo: "client_gascogne.png", name: "Gascogne Wood Products", desc: "Bois — ~3000 employés, cotée en bourse" },
-    // { logo: "client_polytechs.png", name: "Polytechs", desc: "Fabrication de polymères" },
-    // { logo: "client_flexelec.jpeg", name: "Flexelec", desc: "Mise hors gel & maintien en température" },
-    // { logo: "client_agema.png", name: "AGEMA", desc: "Secteur du bâtiment" },
-    // { logo: "client_imc.jpeg", name: "IMC", desc: "Leader du consommable médical (Algérie)" },
-    // { logo: "client_sobio.png", name: "SOBIO", desc: "Produits certifiés BIO" },
+    { logo: "client_gascogne.png", name: "Gascogne Wood Products", desc: "Bois — ~3000 employés, cotée en bourse" },
+    { logo: "client_polytechs.png", name: "Polytechs", desc: "Fabrication de polymères" },
+    { logo: "client_flexelec.jpeg", name: "Flexelec", desc: "Mise hors gel & maintien en température" },
+    { logo: "client_agema.png", name: "AGEMA", desc: "Secteur du bâtiment" },
+    { logo: "client_imc.jpeg", name: "IMC", desc: "Leader du consommable médical (Algérie)" },
+    { logo: "client_sobio.png", name: "SOBIO", desc: "Produits certifiés BIO" },
   ];
   let cx = 7.65, cy = 2.55, cw = 2.55, ch = 1.55, gap = 0.2;
   clients.forEach((c, i) => {
@@ -266,7 +266,7 @@ sectionDivider("01", "Partie 1", "Synthèse de l'activité en entreprise", "ISOA
   card(s, 6.4, 1.85, 6.35, 4.75, { fill: "FFFFFF" });
   s.addText("Organisation de l'équipe de développement", { x: 6.7, y: 2.05, w: 5.8, h: 0.4, fontFace: FONT_HEAD, fontSize: 14, color: NAVY, bold: true });
   const fit = fitImage(805, 423, 6.65, 2.6, 5.9, 3.85);
-//   s.addImage({ path: A + "orgchart.jpeg", x: fit.x, y: fit.y, w: fit.w, h: fit.h });
+  s.addImage({ path: A + "orgchart.jpeg", x: fit.x, y: fit.y, w: fit.w, h: fit.h });
 }
 
 /* =========================================================
@@ -635,7 +635,7 @@ sectionDivider("02", "Partie 2", "Présentation du mémoire", "HEAT2VALUE — Un
   let s = baseContentSlide("Le moteur de décision : logique de priorité", "Partie 2 · Chapitre 2 — Fonctionnement");
   pageNum(s, 18);
   const fit = fitImage(1168, 1346, 4.05, 1.75, 5.2, 5.35);
-//   imgCard(s, A + "decision_engine.png", fit.x, fit.y, fit.w, fit.h);
+  imgCard(s, A + "decision_engine.png", fit.x, fit.y, fit.w, fit.h);
 
   s.addText("Une hiérarchie justifiée :", { x: 0.5, y: 2.1, w: 3.4, h: 0.4, fontFace: FONT_HEAD, fontSize: 14, color: NAVY, bold: true, align: "right" });
   bulletBlock(s, [
@@ -711,7 +711,7 @@ sectionDivider("02", "Partie 2", "Présentation du mémoire", "HEAT2VALUE — Un
     x: 0.6, y: 1.7, w: 12.1, h: 0.4, fontFace: FONT_BODY, fontSize: 13.5, italic: true, color: GRAY,
   });
   const fit = fitImage(1390, 1012, 3.3, 2.15, 6.7, 4.9);
-//   imgCard(s, A + "architecture_modules.png", fit.x, fit.y, fit.w, fit.h);
+  imgCard(s, A + "architecture_modules.png", fit.x, fit.y, fit.w, fit.h);
 }
 
 /* =========================================================
@@ -761,7 +761,7 @@ sectionDivider("02", "Partie 2", "Présentation du mémoire", "HEAT2VALUE — Un
     x: 0.6, y: 4.0, w: 12.1, h: 0.4, fontFace: FONT_HEAD, fontSize: 13, color: NAVY, bold: true,
   });
   const fit = fitImage(850, 200, 1.0, 4.55, 11.3, 2.55);
-//   imgCard(s, A + "sim_table.png", fit.x, fit.y, fit.w, fit.h);
+  imgCard(s, A + "sim_table.png", fit.x, fit.y, fit.w, fit.h);
 }
 
 /* =========================================================
@@ -781,7 +781,7 @@ sectionDivider("02", "Partie 2", "Présentation du mémoire", "HEAT2VALUE — Un
     x: 0.6, y: 3.95, w: 12.1, h: 0.4, fontFace: FONT_HEAD, fontSize: 13, color: NAVY, bold: true,
   });
   const fit = fitImage(848, 374, 2.05, 4.4, 9.2, 2.9);
-//   imgCard(s, A + "decision_table.png", fit.x, fit.y, fit.w, fit.h);
+  imgCard(s, A + "decision_table.png", fit.x, fit.y, fit.w, fit.h);
 }
 
 /* =========================================================
@@ -810,7 +810,7 @@ sectionDivider("02", "Partie 2", "Présentation du mémoire", "HEAT2VALUE — Un
     x: 6.6, y: 1.85, w: 6.1, h: 0.4, fontFace: FONT_HEAD, fontSize: 13, color: NAVY, bold: true,
   });
   const fit = fitImage(469, 205, 6.75, 2.35, 5.9, 2.58);
-  // imgCard(s, A + "kpi_table.png", fit.x, fit.y, fit.w, fit.h);
+  imgCard(s, A + "kpi_table.png", fit.x, fit.y, fit.w, fit.h);
 }
 
 /* =========================================================
@@ -821,7 +821,7 @@ sectionDivider("02", "Partie 2", "Présentation du mémoire", "HEAT2VALUE — Un
   pageNum(s, 26);
 
   const fit = fitImage(660, 237, 1.5, 2.0, 10.3, 3.5);
-  // imgCard(s, A + "comparison_table.png", fit.x, fit.y, fit.w, fit.h);
+  imgCard(s, A + "comparaison_table.png", fit.x, fit.y, fit.w, fit.h);
 
   const stats = [
     { v: "-25%", d: "PUE : 1.30 → 1.05", color: TEAL },
@@ -846,7 +846,7 @@ sectionDivider("02", "Partie 2", "Présentation du mémoire", "HEAT2VALUE — Un
   pageNum(s, 27);
 
   const fit = fitImage(947, 922, 4.15, 1.75, 5.0, 4.9);
-  // imgCard(s, A + "comparison_graph.png", fit.x, fit.y, fit.w, fit.h);
+  imgCard(s, A + "comparaison_graph.png", fit.x, fit.y, fit.w, fit.h);
 
   s.addText([
     { text: "PUE", options: { bold: true, color: TEAL, fontSize: 12.5 } },
@@ -910,7 +910,7 @@ sectionDivider("02", "Partie 2", "Présentation du mémoire", "HEAT2VALUE — Un
   pageNum(s, 29);
 
   const fit = fitImage(672, 313, 0.9, 1.85, 6.9, 3.2);
-  // imgCard(s, A + "scenarios12_table.png", fit.x, fit.y, fit.w, fit.h);
+  imgCard(s, A + "scenarios12_table.png", fit.x, fit.y, fit.w, fit.h);
 
   const concl = [
     { t: "Saison froide", d: "7 scénarios / 12 → HRR = 80%, PUE = 1.05, WUE = 0.50 : valorisation systématique", color: GREEN },
