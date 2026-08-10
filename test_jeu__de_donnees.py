@@ -6,7 +6,7 @@ from decision import heat2value
 from kpi import calcul_kpi
 
 # chargement du jeu de données test
-df_test = pd.read_csv("jeu_de_donnees.csv")
+df_test = pd.read_csv("jeu_de_donnees_test.csv")
 
 resultats = []
 
